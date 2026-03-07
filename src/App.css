@@ -2,6 +2,8 @@
 .portfolio {
   position: relative;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* ===== Scroll progress bar ===== */
@@ -558,14 +560,15 @@
 
 .project-card-arrow {
   position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
+  top: 0.5rem;
+  right: 1rem;
   font-size: 1.25rem;
   color: var(--color-border-strong);
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.project-card:hover .project-card-arrow {
+.project-card:hover .project-card-arrow,
+.cv-entry:hover .project-card-arrow {
   transform: translate(4px, -4px);
   color: var(--color-accent);
 }
@@ -968,5 +971,265 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-gradient {
     animation: none;
+  }
+}
+
+/* ===== Terminal Component ===== */
+.terminal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 700px;
+  height: 60vh;
+  min-height: 400px;
+  background: rgba(10, 10, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-header {
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  flex-shrink: 0;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.term-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.term-close { background: #ff5f56; cursor: pointer; }
+.term-min { background: #ffbd2e; }
+.term-max { background: #27c93f; }
+
+.terminal-title {
+  color: #a1a1aa;
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.terminal-body {
+  flex: 1;
+  padding: 1.25rem;
+  overflow-y: auto;
+  color: #e2e8f0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.text-accent {
+  color: #60a5fa;
+}
+
+.terminal-prompt-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.prompt-arrow {
+  color: #34d399;
+}
+
+.prompt-path {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.prompt-cmd {
+  color: #f8f8f8;
+}
+
+.terminal-output {
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #f8f8f8;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  padding: 0;
+}
+
+/* ===== Project Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.project-modal {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(10, 10, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-modal-content {
+  padding: 3rem;
+  position: relative;
+  color: #e2e8f0;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: scale(1.05);
+}
+
+.project-modal-header {
+  margin-bottom: 2rem;
+}
+
+.project-modal-name {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 400;
+  color: #f8f8f8;
+  margin: 0 0 0.5rem;
+}
+
+.project-modal-meta {
+  font-size: 1rem;
+  color: #60a5fa;
+  font-weight: 500;
+}
+
+.project-modal-description {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #a1a1aa;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.project-modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+
+.project-modal-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ===== Responsive Adjustments for V2 Features ===== */
+@media (max-width: 768px) {
+  .project-modal-content {
+    padding: 2rem;
+  }
+  
+  .project-modal-name {
+    font-size: 2.25rem;
+  }
+
+  .terminal-window {
+    height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-modal-content {
+    padding: 1.5rem;
+  }
+  
+  .project-modal-name {
+    font-size: 1.75rem;
+  }
+  
+  .project-modal-description {
+    font-size: 1rem;
+  }
+
+  .modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .terminal-window {
+    height: 85vh;
+    min-height: 0;
+  }
+
+  .terminal-body {
+    padding: 1rem;
+    font-size: 0.85rem;
   }
 }

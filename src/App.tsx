@@ -13,6 +13,7 @@ import {
   GitHubActivity,
   Contact,
   Footer,
+  Terminal
 } from './components'
 import './App.css'
 
@@ -23,6 +24,23 @@ function App() {
   const heroY = useTransform(scrollYProgress, [0, 0.3], [0, 60])
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [terminalOpen, setTerminalOpen] = useState(false)
+
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Toggle terminal on Cmd/Ctrl + K or Tilde (~)
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault()
+        setTerminalOpen(prev => !prev)
+      } else if (e.key === '~' || e.key === '`') {
+        e.preventDefault()
+        setTerminalOpen(prev => !prev)
+      }
+    }
+
+    window.addEventListener('keydown', handleGlobalKeyDown)
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown)
+  }, [])
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -75,6 +93,8 @@ function App() {
         <Contact />
         <Footer />
       </main>
+
+      <Terminal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />
     </div>
   )
 }

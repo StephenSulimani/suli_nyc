@@ -16,7 +16,8 @@ export const projects = [
   {
     name: 'Roots',
     description:
-      'Led development of a financial platform for budgeting, investing, and credit services. Won Best Financial Hack. Built an AI-driven investment recommendations dashboard.',
+      'Led development of a financial platform for budgeting, investing, and credit services.',
+    longDescription: 'Led development of a comprehensive financial platform integrating budgeting, investing, and credit services. Won Best Financial Hack. Built an AI-driven investment recommendations dashboard using Flask and PostgreSQL, aiming to democratize access to personalized financial planning tools.',
     language: 'Python',
     tech: ['Python', 'Pandas', 'Next.js', 'Flask', 'PostgreSQL'],
     url: 'https://devpost.com/software/roots-xk19te',
@@ -25,7 +26,8 @@ export const projects = [
   {
     name: 'Sentiment-Driven Stock Predictor',
     description:
-      'Developed a machine learning model for stock investment forecasts using financial news sentiment. Applied VADER and NLTK for sentiment analysis; built a scalable data ingestion pipeline.',
+      'Developed a machine learning model for stock investment forecasts using financial news sentiment.',
+    longDescription: 'Developed a machine learning model for stock investment forecasts utilizing natural language processing on financial news sentiment. Applied VADER and NLTK toolkits for robust sentiment analysis, and constructed a scalable data ingestion pipeline to feed the scikit-learn predictive models.',
     language: 'Python',
     tech: ['Python', 'Pandas', 'scikit-learn', 'NLTK', 'Git'],
     url: 'https://github.com/vennreddy490/Sentiment-Driven-Stock-Predictor',
@@ -58,19 +60,20 @@ export const projects = [
   {
     name: 'GroupMeBot',
     description: 'TypeScript library for building GroupMe bots with a clean, extensible API.',
+    longDescription: 'An open-source TypeScript library designed to streamline the creation of GroupMe bots. It provides a clean, strongly-typed, and extensible API wrapper around the GroupMe REST endpoints, allowing developers to easily handle message events and bot replies without wrestling with the underlying HTTP requests.',
     language: 'TypeScript',
     tech: ['TypeScript', 'Node.js', 'REST API'],
     url: 'https://github.com/StephenSulimani/GroupMeBot',
     updated: '2024',
   },
-//   {
-//     name: 'EmailLookup',
-//     description: 'C# library to resolve SMTP, POP3, and IMAP servers for any email domain.',
-//     language: 'C#',
-//     tech: ['C#', '.NET', 'DNS'],
-//     url: 'https://github.com/StephenSulimani/EmailLookup',
-//     updated: '2020',
-//   },
+  //   {
+  //     name: 'EmailLookup',
+  //     description: 'C# library to resolve SMTP, POP3, and IMAP servers for any email domain.',
+  //     language: 'C#',
+  //     tech: ['C#', '.NET', 'DNS'],
+  //     url: 'https://github.com/StephenSulimani/EmailLookup',
+  //     updated: '2020',
+  //   },
 ]
 
 export const skillCategories = [
@@ -86,7 +89,7 @@ export const skillCategories = [
       { name: 'C', icon: 'c', color: '#A8B9CC' },
       { name: 'C++', icon: 'cplusplus', color: '#00599C' },
       { name: 'Ruby', icon: 'ruby', color: '#CC342D' },
-      { name: 'PHP', icon: 'php', color: '#777BB4'}
+      { name: 'PHP', icon: 'php', color: '#777BB4' }
     ],
   },
   {
@@ -113,21 +116,21 @@ export const skillCategories = [
   {
     title: 'Operating Systems',
     skills: [
-      { name: 'Linux', icon:'linux', color: '#000000'},
-      { name: 'macOS', icon: 'apple', color: '#000000'},
-      { name: 'Arch', icon: 'archlinux', color: '#1793D1'},
-      { name: 'Ubuntu', icon: 'ubuntu', color: '#E95420'},
-      { name: 'Windows', icon: 'windows', color: '#0078D6', localIcon: '/windows.png'},
+      { name: 'Linux', icon: 'linux', color: '#000000' },
+      { name: 'macOS', icon: 'apple', color: '#000000' },
+      { name: 'Arch', icon: 'archlinux', color: '#1793D1' },
+      { name: 'Ubuntu', icon: 'ubuntu', color: '#E95420' },
+      { name: 'Windows', icon: 'windows', color: '#0078D6', localIcon: '/windows.png' },
     ]
   },
   {
     title: 'Cloud & DevOps',
     skills: [
-      { name: 'AWS', icon: 'amazonaws', color: '#FF9900',localIcon: '/amazon_aws.png'  },
+      { name: 'AWS', icon: 'amazonaws', color: '#FF9900', localIcon: '/amazon_aws.png' },
       { name: 'Google Cloud', icon: 'googlecloud', color: '#4285F4' },
       { name: 'Docker', icon: 'docker', color: '#2496ED' },
       { name: 'Git', icon: 'git', color: '#F05032' },
-      { name: 'GitHub', icon:'github', color: '#000000'}
+      { name: 'GitHub', icon: 'github', color: '#000000' }
     ],
   },
   {
@@ -159,7 +162,8 @@ export const education = [
     logo: '/uga-logo.png',
     details: [
       'GPA: 3.91/4.00; summa cum laude.',
-      "HOPE Scholarship, Presidential Scholar (Spring 2021, Fall 2021, Spring 2022, Spring 2023), Dean's List.",
+      "Honors: HOPE Scholarship, Presidential Scholar (Spring 2021, Fall 2021, Spring 2022, Spring 2023), Dean's List.",
+      'Coursework: Data Structures & Algorithms, Software Engineering, Database Management, Systems Programming, Intro to Computational Investing.',
     ],
   },
 ]

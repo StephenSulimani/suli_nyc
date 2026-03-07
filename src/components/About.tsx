@@ -20,10 +20,10 @@ export function About() {
           I'm an MS candidate in Quantitative and Computational Finance at Georgia Tech, blending a strong foundation in computer science with a passion for systematic markets.
         </p>
         <p>
-          Whether I'm engineering high-performance APIs, building stunning interactive interfaces, or researching statistical arbitrage strategies, I love diving deep into complex problems.
+          My focus lies at the intersection of quantitative finance and backend systems. I specialize in engineering high-performance APIs and building scalable data pipelines, with a strong interest in algorithmic trading strategies.
         </p>
         <p>
-          I'm actively seeking opportunities in quantitative development and software engineering where I can build fast, resilient systems and tackle challenging data.
+          I'm actively seeking opportunities in quantitative development and backend software engineering where I can build fast, resilient infrastructure and tackle challenging, data-intensive problems.
         </p>
       </motion.div>
     </motion.section>
