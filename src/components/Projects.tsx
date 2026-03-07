@@ -22,7 +22,8 @@ export function Projects() {
             key={project.name}
             className="project-card"
             variants={itemVariants}
-            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            whileHover={{ y: -8, scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             <a
               href={project.url}

@@ -75,8 +75,8 @@
   left: -10%;
   top: -10%;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
   transform-origin: center center;
@@ -97,10 +97,10 @@
   right: 0;
   z-index: 100;
   padding: 1.25rem 1.5rem;
-  background: rgba(250, 249, 247, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(232, 230, 227, 0.6);
+  background: rgba(9, 9, 11, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-inner {
@@ -159,7 +159,7 @@
 }
 
 .nav-toggle:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .nav-toggle-bar {
@@ -227,8 +227,8 @@
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 1.5rem;
-  border: 3px solid white;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .hero-label {
@@ -287,24 +287,27 @@
 
 .btn-primary {
   background: var(--color-ink);
-  color: white;
+  color: var(--color-paper);
   border: 2px solid var(--color-ink);
 }
 
 .btn-primary:hover {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: white;
+  background: transparent;
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
 .btn-ghost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--color-ink);
-  border: 2px solid var(--color-border-strong);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
 }
 
 .btn-ghost:hover {
-  border-color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
   color: var(--color-ink);
 }
 
@@ -385,15 +388,17 @@
 
 .cv-entry {
   padding: 1.75rem;
-  background: white;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .cv-entry:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .cv-entry-header {
@@ -410,6 +415,9 @@
   height: 56px;
   object-fit: contain;
   flex-shrink: 0;
+  background-color: white;
+  padding: 0.35rem;
+  border-radius: 8px;
 }
 
 .cv-entry-header-text {
@@ -480,15 +488,17 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  background: white;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .project-card:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(96, 165, 250, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .project-card-link {
@@ -560,10 +570,7 @@
   color: var(--color-accent);
 }
 
-/* ===== Interests — fresh layout ===== */
-.section-interests {
-  /* Matches other sections — no distinct background */
-}
+
 
 .interests-grid {
   display: grid;
@@ -576,15 +583,21 @@
   flex-direction: column;
   gap: 0.25rem;
   padding: 1.25rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
   border-radius: 10px;
   border-left: 3px solid var(--color-accent);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s ease;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .interest-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .interest-org {
@@ -639,15 +652,17 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
-  background: white;
-  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .skill-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-border-strong);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .skill-icon {
@@ -686,11 +701,12 @@
 
 .github-calendar-container .calendar {
   font-family: var(--font-sans);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 1rem;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .github-calendar-container .calendar-graph text.wday,
@@ -708,11 +724,11 @@
 
 /* Softer, cohesive contribution colors */
 .github-calendar-container {
-  --color-calendar-graph-day-bg: #e8e6e3;
-  --color-calendar-graph-day-L1-bg: #a8d4e6;
-  --color-calendar-graph-day-L2-bg: #5eb8e0;
-  --color-calendar-graph-day-L3-bg: #1a8fcc;
-  --color-calendar-graph-day-L4-bg: #0d47a1;
+  --color-calendar-graph-day-bg: rgba(255, 255, 255, 0.05);
+  --color-calendar-graph-day-L1-bg: rgba(96, 165, 250, 0.3);
+  --color-calendar-graph-day-L2-bg: rgba(96, 165, 250, 0.5);
+  --color-calendar-graph-day-L3-bg: rgba(96, 165, 250, 0.8);
+  --color-calendar-graph-day-L4-bg: rgba(96, 165, 250, 1);
 }
 
 .github-calendar-loading {
@@ -883,6 +899,9 @@
   .cv-entry-logo {
     width: 48px;
     height: 48px;
+    background-color: white;
+    padding: 0.25rem;
+    border-radius: 6px;
   }
 
   .project-card-link {

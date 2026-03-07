@@ -53,17 +53,26 @@ export function Hero({ style }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <a href="https://drive.google.com/file/d/1z1PIiWomIee49taYWGtjdmhBltSdjqDY/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <motion.a
+            href="https://drive.google.com/file/d/1z1PIiWomIee49taYWGtjdmhBltSdjqDY/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Résumé
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="https://github.com/StephenSulimani"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-ghost"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             GitHub
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </motion.header>

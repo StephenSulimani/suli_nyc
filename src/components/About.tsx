@@ -17,11 +17,13 @@ export function About() {
       </motion.h2>
       <motion.div className="section-content about-content" variants={itemVariants}>
         <p className="about-lead">
-          MS candidate in Quantitative and Computational Finance at Georgia Tech, with a background
-          in computer science and software engineering.
+          I'm an MS candidate in Quantitative and Computational Finance at Georgia Tech, blending a strong foundation in computer science with a passion for systematic markets.
         </p>
         <p>
-          Actively seeking internships in quantitative development and software engineering.
+          Whether I'm engineering high-performance APIs, building stunning interactive interfaces, or researching statistical arbitrage strategies, I love diving deep into complex problems.
+        </p>
+        <p>
+          I'm actively seeking opportunities in quantitative development and software engineering where I can build fast, resilient systems and tackle challenging data.
         </p>
       </motion.div>
     </motion.section>

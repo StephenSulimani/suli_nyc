@@ -170,6 +170,7 @@ export const experience = [
     company: 'NCR Voyix',
     location: 'Atlanta, GA',
     period: 'May 2025 – August 2025',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/NCR_Voyix_logo.svg',
     details: [
       'Developed React + Material UI interfaces for enterprise applications.',
       'Built Go APIs for search functionality and backend services.',
@@ -181,6 +182,7 @@ export const experience = [
     company: 'HeyBrain',
     location: 'Tel Aviv, Israel',
     period: 'May 2024 – August 2024',
+    logo: '/heybrain-logo.svg',
     details: [
       'Implemented machine learning solutions for product features.',
       'Applied Logistic Regression, OpenAI CLIP, and K-Means clustering to real-world datasets.',

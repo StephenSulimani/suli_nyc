@@ -24,7 +24,16 @@ export function Experience() {
             variants={itemVariants}
           >
             <div className="cv-entry-header">
-              <div>
+              {exp.logo && (
+                <img
+                  src={exp.logo}
+                  alt={`${exp.company} logo`}
+                  className="cv-entry-logo"
+                  width={56}
+                  height={56}
+                />
+              )}
+              <div className="cv-entry-header-text">
                 <h3 className="cv-entry-title">{exp.role}</h3>
                 <p className="cv-entry-org">{exp.company}</p>
               </div>
