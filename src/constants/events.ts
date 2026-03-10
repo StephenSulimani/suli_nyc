@@ -3,7 +3,7 @@ import ReactGA from "react-ga4";
 const resumeEvent = () => {
   ReactGA.event({
     category: "Resume Click",
-    action: "click",
+    action: "resume_click",
     label: "resume_click",
   });
 };
@@ -11,7 +11,7 @@ const resumeEvent = () => {
 const githubClick = (label: string) => {
   ReactGA.event({
     category: `Github Click (${label})`,
-    action: "click",
+    action: "github_click",
     label: "github_click",
   });
 };
@@ -19,7 +19,7 @@ const githubClick = (label: string) => {
 const linkedInClick = () => {
   ReactGA.event({
     category: "LinkedIn Click",
-    action: "click",
+    action: "linkedin_click",
     label: "linkedin_click",
   });
 };
