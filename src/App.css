@@ -223,14 +223,32 @@
   text-align: center;
 }
 
-.hero-headshot {
+.hero-headshot-wrap {
   width: 140px;
   height: 140px;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   margin-bottom: 1.5rem;
   border: 3px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.hero-headshot-zoom {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.4);
+}
+
+.hero-headshot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
 }
 
 .hero-label {
@@ -848,7 +866,7 @@
     min-height: 100svh;
   }
 
-  .hero-headshot {
+  .hero-headshot-wrap {
     width: 110px;
     height: 110px;
     margin-bottom: 1.25rem;

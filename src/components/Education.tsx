@@ -48,6 +48,7 @@ export function Education() {
                   className="cv-entry-logo"
                   width={56}
                   height={56}
+                  loading="lazy"
                 />
               )}
               <div className="cv-entry-header-text">
@@ -92,6 +93,7 @@ export function Education() {
                       width={80}
                       height={80}
                       style={{ flexShrink: 0 }}
+                      loading="lazy"
                     />
                   )}
                   <div>

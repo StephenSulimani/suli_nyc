@@ -2,9 +2,18 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { navLinks } from '../data'
 
-export function Nav() {
+interface NavProps {
+  onLogoHover?: (hovered: boolean) => void
+}
+
+export function Nav({ onLogoHover }: NavProps) {
   const [isHovered, setIsHovered] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const setHovered = (hovered: boolean) => {
+    setIsHovered(hovered)
+    onLogoHover?.(hovered)
+  }
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 
@@ -30,8 +39,8 @@ export function Nav() {
         <a
           href="#"
           className="nav-logo"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
           onClick={closeMobileMenu}
         >
           <span className="nav-logo-text nav-logo-wrapper">

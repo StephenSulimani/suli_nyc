@@ -12,21 +12,56 @@ declare global {
   }
 }
 
+const GITHUB_CALENDAR_SCRIPT = 'https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js'
+const GITHUB_CALENDAR_CSS = 'https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css'
+
+function loadGitHubCalendarScript(): Promise<void> {
+  if (typeof window !== 'undefined' && (window as Window & { __githubCalendarLoaded?: boolean }).__githubCalendarLoaded) {
+    return Promise.resolve()
+  }
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${GITHUB_CALENDAR_SCRIPT}"]`)
+    if (existing) {
+      if (typeof (window as Window & { GitHubCalendar?: unknown }).GitHubCalendar === 'function') return resolve()
+      existing.addEventListener('load', () => resolve())
+      return
+    }
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = GITHUB_CALENDAR_CSS
+    document.head.appendChild(link)
+    const script = document.createElement('script')
+    script.src = GITHUB_CALENDAR_SCRIPT
+    script.defer = true
+    script.onload = () => {
+      (window as Window & { __githubCalendarLoaded?: boolean }).__githubCalendarLoaded = true
+      resolve()
+    }
+    script.onerror = reject
+    document.head.appendChild(script)
+  })
+}
+
 export function GitHubActivity() {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current || typeof window.GitHubCalendar !== 'function') return
+    if (!containerRef.current) return
 
-    window
-      .GitHubCalendar(containerRef.current, 'StephenSulimani', {
-        responsive: true,
-        tooltips: true,
-        global_stats: false,
+    loadGitHubCalendarScript()
+      .then(() => {
+        type CalendarFn = (container: HTMLElement, user: string, opts?: object) => Promise<Response>
+        const win = window as Window & { GitHubCalendar?: CalendarFn }
+        if (!containerRef.current || typeof win.GitHubCalendar !== 'function') return
+        return win.GitHubCalendar(containerRef.current!, 'StephenSulimani', {
+            responsive: true,
+            tooltips: true,
+            global_stats: false,
+          })
       })
       .then(() => {
         if (!containerRef.current) return
-        const container = containerRef.current
+        const container = containerRef.current as HTMLElement
         // Remove skip link and "Learn how we count contributions" link
         container
           .querySelectorAll(

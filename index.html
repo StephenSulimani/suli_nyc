@@ -2,36 +2,107 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Preload LCP image first so it starts loading immediately -->
+    <link rel="preload" href="/professional_headshot.webp" as="image" />
+    <title>Stephen Sulimani – Quantitative Developer & Software Engineer</title>
+
+    <meta
+      name="description"
+      content="Portfolio of Stephen Sulimani, a quantitative developer and software engineer in Atlanta & New York, showcasing projects, experience, and skills across modern web and quantitative systems."
+    />
+    <link rel="canonical" href="https://suli.nyc/" />
+    <meta name="theme-color" content="#020617" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Stephen Sulimani – Quantitative Developer & Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Explore the portfolio of Stephen Sulimani, highlighting quantitative development, software engineering projects, and technical experience."
+    />
+    <meta property="og:url" content="https://suli.nyc/" />
+    <meta property="og:image" content="https://suli.nyc/professional_headshot.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Stephen Sulimani – Quantitative Developer & Software Engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Quantitative development and software engineering portfolio of Stephen Sulimani."
+    />
+    <meta name="twitter:image" content="https://suli.nyc/professional_headshot.webp" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Stephen Sulimani",
+        "url": "https://suli.nyc/",
+        "image": "https://suli.nyc/professional_headshot.webp",
+        "jobTitle": "Quantitative Developer & Software Engineer",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Atlanta",
+          "addressRegion": "GA",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://github.com/StephenSulimani",
+          "https://www.linkedin.com/in/StephenSulimani"
+        ]
+      }
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Load fonts async so they don't block first paint -->
     <link
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
-      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
-    <title>Stephen Sulimani</title>
-    <script
-      src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"
-      defer
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
-    />
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8JDCMMCWTL"
-    ></script>
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+      />
+    </noscript>
+
+    <!-- GA loaded after idle to avoid blocking main thread -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-
-      gtag("config", "G-8JDCMMCWTL");
+      function loadGA() {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-8JDCMMCWTL";
+        document.head.appendChild(s);
+        gtag("js", new Date());
+        gtag("config", "G-8JDCMMCWTL");
+      }
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(function () {
+          loadGA();
+        }, { timeout: 2500 });
+      } else {
+        window.addEventListener("load", function () {
+          setTimeout(loadGA, 1);
+        });
+      }
     </script>
   </head>
   <body>

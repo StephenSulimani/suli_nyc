@@ -31,6 +31,7 @@ export function Experience() {
                   className="cv-entry-logo"
                   width={56}
                   height={56}
+                  loading="lazy"
                 />
               )}
               <div className="cv-entry-header-text">

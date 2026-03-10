@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
   Hero,
@@ -10,12 +10,15 @@ import {
   Projects,
   Interests,
   Skills,
-  GitHubActivity,
   Contact,
   Footer,
   Terminal
 } from './components'
 import './App.css'
+
+const GitHubActivity = lazy(() =>
+  import('./components/GitHubActivity').then((m) => ({ default: m.GitHubActivity }))
+)
 
 function App() {
   const { scrollYProgress } = useScroll()
@@ -25,6 +28,7 @@ function App() {
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [terminalOpen, setTerminalOpen] = useState(false)
+  const [navLogoHovered, setNavLogoHovered] = useState(false)
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -72,7 +76,7 @@ function App() {
         aria-hidden
       />
 
-      <Nav />
+      <Nav onLogoHover={setNavLogoHovered} />
 
       <Hero
         style={{
@@ -80,6 +84,7 @@ function App() {
           scale: heroScale,
           y: heroY,
         }}
+        useCasualHeadshot={navLogoHovered}
       />
 
       <main className="main-content">
@@ -89,7 +94,9 @@ function App() {
         <Projects />
         <Interests />
         <Skills />
-        <GitHubActivity />
+        <Suspense fallback={<section id="activity" className="section" aria-busy="true"><div className="section-content" style={{ minHeight: 120 }} /></section>}>
+          <GitHubActivity />
+        </Suspense>
         <Contact />
         <Footer />
       </main>
