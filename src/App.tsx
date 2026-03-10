@@ -28,7 +28,6 @@ function App() {
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [terminalOpen, setTerminalOpen] = useState(false)
-  const [navLogoHovered, setNavLogoHovered] = useState(false)
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -76,7 +75,7 @@ function App() {
         aria-hidden
       />
 
-      <Nav onLogoHover={setNavLogoHovered} />
+      <Nav />
 
       <Hero
         style={{
@@ -84,7 +83,6 @@ function App() {
           scale: heroScale,
           y: heroY,
         }}
-        useCasualHeadshot={navLogoHovered}
       />
 
       <main className="main-content">

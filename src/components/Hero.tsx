@@ -1,42 +1,26 @@
 import { motion, type MotionProps } from "framer-motion";
-import { professionalHeadshotUrl, casualHeadshotUrl } from "../data";
+import { headshotUrl } from "../data";
 import { githubClick, resumeEvent } from "../constants/events";
 
 interface HeroProps {
   style: MotionProps["style"];
-  useCasualHeadshot?: boolean;
 }
 
-export function Hero({ style, useCasualHeadshot = false }: HeroProps) {
+export function Hero({ style }: HeroProps) {
   return (
     <motion.header className="hero" style={style}>
       <div className="hero-inner">
         <div className="hero-headshot-wrap">
           <div className="hero-headshot-zoom">
             <motion.img
-              src={professionalHeadshotUrl}
+              src={headshotUrl}
               alt="Stephen Sulimani"
               className="hero-headshot"
               fetchPriority="high"
               decoding="async"
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{
-                opacity: useCasualHeadshot ? 0 : 1,
-                scale: 1,
-              }}
-              transition={{
-                opacity: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
-                scale: { duration: 0.8, delay: 0.1 },
-              }}
-            />
-            <motion.img
-              src={casualHeadshotUrl}
-              alt="Stephen Sulimani"
-              className="hero-headshot"
-              fetchPriority="low"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: useCasualHeadshot ? 1 : 0 }}
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             />
           </div>
         </div>

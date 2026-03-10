@@ -1,10 +1,7 @@
 // export const headshotUrl =
   // 'https://qcf.gatech.edu/sites/default/files/styles/bio_pic/public/pictures/2026-02/Stephen%20Diamond%20Sulimani.jpg?itok=2QqLlppH'
 
-export const headshotUrl = '/stephen_sulimani.jpg'
-
-export const professionalHeadshotUrl = '/professional_headshot.webp'
-export const casualHeadshotUrl = '/casual_headshot.webp'
+export const headshotUrl = '/professional_headshot.webp'
 
 export const navLinks = [
   { href: '#about', label: 'About' },
