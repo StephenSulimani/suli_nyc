@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { motion } from "framer-motion";
+import { containerVariants, itemVariants } from "../constants/animation";
+import { githubClick, linkedInClick } from "../constants/events";
 
 export function Contact() {
   return (
@@ -9,15 +10,20 @@ export function Contact() {
       aria-labelledby="contact-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={containerVariants}
     >
-      <motion.h2 id="contact-heading" className="section-title" variants={itemVariants}>
+      <motion.h2
+        id="contact-heading"
+        className="section-title"
+        variants={itemVariants}
+      >
         Get in touch
       </motion.h2>
       <motion.div className="contact-content" variants={itemVariants}>
         <p>
-          Open to opportunities in quantitative development and software engineering.
+          Open to opportunities in quantitative development and software
+          engineering.
         </p>
         <div className="contact-links">
           <a href="mailto:stephens@gatech.edu" className="contact-link">
@@ -31,6 +37,9 @@ export function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             className="contact-link"
+            onClick={() => {
+              githubClick("Contact");
+            }}
           >
             GitHub
           </a>
@@ -39,11 +48,14 @@ export function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             className="contact-link"
+            onClick={() => {
+              linkedInClick();
+            }}
           >
             LinkedIn
           </a>
         </div>
       </motion.div>
     </motion.section>
-  )
+  );
 }

@@ -1,8 +1,9 @@
-import { motion, type MotionProps } from 'framer-motion'
-import { headshotUrl } from '../data'
+import { motion, type MotionProps } from "framer-motion";
+import { headshotUrl } from "../data";
+import { githubClick, resumeEvent } from "../constants/events";
 
 interface HeroProps {
-  style: MotionProps['style']
+  style: MotionProps["style"];
 }
 
 export function Hero({ style }: HeroProps) {
@@ -45,7 +46,8 @@ export function Hero({ style }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
         >
-          Quantitative Development · Software Engineering Atlanta, GA · New York, NY
+          Quantitative Development · Software Engineering Atlanta, GA · New
+          York, NY
         </motion.p>
         <motion.div
           className="hero-cta"
@@ -60,6 +62,7 @@ export function Hero({ style }: HeroProps) {
             className="btn btn-primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => resumeEvent()}
           >
             Résumé
           </motion.a>
@@ -70,11 +73,12 @@ export function Hero({ style }: HeroProps) {
             className="btn btn-ghost"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => githubClick("Hero")}
           >
             GitHub
           </motion.a>
         </motion.div>
       </div>
     </motion.header>
-  )
+  );
 }
