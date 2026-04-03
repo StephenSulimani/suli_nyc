@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# suli.nyc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for Stephen Sulimani, built as a static Astro project with a React island for the interactive experience.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **[Astro](https://astro.build/)** — static site generation, layouts, and routing
+- **[React](https://react.dev/)** — portfolio UI hydrated with `client:load` so [Framer Motion](https://www.framer.com/motion/) scroll effects, keyboard shortcuts, and shared state stay in one tree
+- **TypeScript** — `tsconfig.json` extends `astro/tsconfigs/strict`
+- **[Fontsource](https://fontsource.org/)** — self-hosted Instrument Serif and Source Sans 3 (Latin subsets) in `src/layouts/Layout.astro`
+- **[react-ga4](https://www.npmjs.com/package/react-ga4)** — analytics events from the React app
 
-## React Compiler
+## Scripts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `bun run dev`     | Start Astro dev server           |
+| `bun run build`   | Production build → `dist/`       |
+| `bun run preview` | Serve the `dist/` output locally |
+| `bun run lint`    | Run ESLint on TS/TSX sources     |
 
-## Expanding the ESLint configuration
+## Project layout
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- `src/pages/` — file-based routes (`index.astro` is the homepage)
+- `src/layouts/Layout.astro` — document shell, fonts, `<title>`
+- `src/App.tsx` — root React component (island entry)
+- `src/components/` — portfolio sections and UI
+- `src/lib/github-calendar-loader.ts` — lazy-loads the GitHub contributions widget when the activity section nears the viewport
+- `public/` — static assets (`robots.txt`, icons, images)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Configuration notes
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **`astro.config.mjs`** — `site` is set to `https://suli.nyc` for [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/). Change it if the canonical URL changes, and update `public/robots.txt` so the `Sitemap:` line matches.
+- **ESLint** ignores the generated `.astro` directory (see `eslint.config.js`).
