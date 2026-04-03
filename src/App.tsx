@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, StrictMode } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import ReactGA from 'react-ga4'
 import {
   Hero,
   HeroBackground,
@@ -17,7 +18,9 @@ import {
 } from './components'
 import './App.css'
 
-function App() {
+const TRACKING_ID = 'G-8JDCMMCWTL'
+
+function AppInner() {
   const { scrollYProgress } = useScroll()
   const heroOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
   const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 0.95])
@@ -25,6 +28,10 @@ function App() {
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [terminalOpen, setTerminalOpen] = useState(false)
+
+  useEffect(() => {
+    ReactGA.initialize(TRACKING_ID)
+  }, [])
 
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -96,6 +103,14 @@ function App() {
 
       <Terminal isOpen={terminalOpen} onClose={() => setTerminalOpen(false)} />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <StrictMode>
+      <AppInner />
+    </StrictMode>
   )
 }
 

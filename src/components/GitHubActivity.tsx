@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { containerVariants, itemVariants } from '../constants/animation'
+import { loadGithubCalendarAssets } from '../lib/github-calendar-loader'
 
 declare global {
   interface Window {
@@ -13,29 +14,35 @@ declare global {
 }
 
 export function GitHubActivity() {
+  const sectionRef = useRef<HTMLElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const shouldLoad = useInView(sectionRef, { once: true, margin: '240px 0px' })
 
   useEffect(() => {
-    if (!containerRef.current || typeof window.GitHubCalendar !== 'function') return
+    if (!shouldLoad || !containerRef.current) return
 
-    window
-      .GitHubCalendar(containerRef.current, 'StephenSulimani', {
-        responsive: true,
-        tooltips: true,
-        global_stats: false,
+    let cancelled = false
+
+    loadGithubCalendarAssets()
+      .then(() => {
+        if (cancelled || !containerRef.current) return
+        if (typeof window.GitHubCalendar !== 'function') return
+
+        return window.GitHubCalendar(containerRef.current, 'StephenSulimani', {
+          responsive: true,
+          tooltips: true,
+          global_stats: false,
+        })
       })
       .then(() => {
-        if (!containerRef.current) return
+        if (cancelled || !containerRef.current) return
         const container = containerRef.current
-        // Remove skip link and "Learn how we count contributions" link
         container
           .querySelectorAll(
             'a[href^="#year-link-"], a[href="#user-activity-overview"], a[href*="why-are-my-contributions-not-showing-up"]'
           )
           .forEach((el) => el.remove())
-        // Remove contrib-footer (contains "Learn how we count contributions")
         container.querySelectorAll('.contrib-footer').forEach((el) => el.remove())
-        // Remove any element that is solely "Skip to contributions year list" (can be span/div)
         container.querySelectorAll('*').forEach((el) => {
           if (el.children.length === 0 && el.textContent?.trim() === 'Skip to contributions year list') {
             el.remove()
@@ -43,15 +50,19 @@ export function GitHubActivity() {
         })
       })
       .catch(() => {
-        if (containerRef.current) {
-          containerRef.current.innerHTML =
-            '<p style="color: var(--color-ink-muted); font-size: 0.9rem;">Unable to load contribution graph. <a href="https://github.com/StephenSulimani" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>'
-        }
+        if (cancelled || !containerRef.current) return
+        containerRef.current.innerHTML =
+          '<p style="color: var(--color-ink-muted); font-size: 0.9rem;">Unable to load contribution graph. <a href="https://github.com/StephenSulimani" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>'
       })
-  }, [])
+
+    return () => {
+      cancelled = true
+    }
+  }, [shouldLoad])
 
   return (
     <motion.section
+      ref={sectionRef}
       id="activity"
       className="section section-github-activity"
       aria-labelledby="activity-heading"
