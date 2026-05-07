@@ -207,6 +207,14 @@ export const education = [
 export const experience = [
   {
     role: "Software Engineering Intern",
+    company: "Caption Partners",
+    location: "Oklahoma City, OK",
+    period: "June 2026 - August 2026",
+    logo: "https://images.squarespace-cdn.com/content/v1/55b7b45ee4b0f49f18fcc363/1438110361321-Q8BVJ5ZP9PVVDZRGRO29/logo.jpg?format=1500w",
+    details: [],
+  },
+  {
+    role: "Software Engineering Intern",
     company: "NCR Voyix",
     location: "Atlanta, GA",
     period: "May 2025 – August 2025",
