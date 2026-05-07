@@ -1,0 +1,28 @@
+name: Suli.nyc Deploy
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, admin]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Build Project
+        run: bun run build
+
+      - name: Deploy to Hestia Public HTML
+        run: |
+          rsync -avz --delete dist/ /home/admin/web/suli.nyc/public_html/
+
+      - name: Fix Permissions (Safety Check)
+        run: |
+          chown -R admin:admin /home/admin/web/suli.nyc/public_html/
+          find /home/admin/web/suli.nyc/public_html/ -type d -exec chmod 755 {} +
+          find /home/admin/web/suli.nyc/public_html/ -type f -exec chmod 644 {} +
