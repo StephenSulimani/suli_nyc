@@ -80,15 +80,26 @@
     linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  mask-image: radial-gradient(
+    ellipse 90% 70% at 50% 0%,
+    black 30%,
+    transparent 75%
+  );
   transform-origin: center center;
   backface-visibility: hidden;
 }
 
 @keyframes gradient-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.98); }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.98);
+  }
 }
 
 /* ===== Navigation ===== */
@@ -170,7 +181,9 @@
   height: 2px;
   background: var(--color-ink);
   border-radius: 1px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
@@ -223,14 +236,23 @@
   text-align: center;
 }
 
-.hero-headshot {
+.hero-headshot-wrap {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
   border: 3px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.hero-headshot-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: 20% 50%;
+  transform-origin: center;
 }
 
 .hero-label {
@@ -499,7 +521,9 @@
 
 .project-card:hover {
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(96, 165, 250, 0.1);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(96, 165, 250, 0.1);
   border-color: rgba(255, 255, 255, 0.2);
 }
 
@@ -564,7 +588,9 @@
   right: 1rem;
   font-size: 1.25rem;
   color: var(--color-border-strong);
-  transition: transform 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
 }
 
 .project-card:hover .project-card-arrow,
@@ -572,8 +598,6 @@
   transform: translate(4px, -4px);
   color: var(--color-accent);
 }
-
-
 
 .interests-grid {
   display: grid;
@@ -854,6 +878,12 @@
     margin-bottom: 1.25rem;
   }
 
+  .hero-headshot-wrap {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 1.25rem;
+  }
+
   .hero-label {
     font-size: 0.8rem;
     letter-spacing: 0.1em;
@@ -996,11 +1026,13 @@
   background: rgba(10, 10, 12, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .terminal-header {
@@ -1025,9 +1057,16 @@
   border-radius: 50%;
 }
 
-.term-close { background: #ff5f56; cursor: pointer; }
-.term-min { background: #ffbd2e; }
-.term-max { background: #27c93f; }
+.term-close {
+  background: #ff5f56;
+  cursor: pointer;
+}
+.term-min {
+  background: #ffbd2e;
+}
+.term-max {
+  background: #27c93f;
+}
 
 .terminal-title {
   color: #a1a1aa;
@@ -1112,7 +1151,9 @@
   background: rgba(10, 10, 12, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
   overflow: hidden;
   position: relative;
   display: flex;
@@ -1193,7 +1234,7 @@
   .project-modal-content {
     padding: 2rem;
   }
-  
+
   .project-modal-name {
     font-size: 2.25rem;
   }
@@ -1207,11 +1248,11 @@
   .project-modal-content {
     padding: 1.5rem;
   }
-  
+
   .project-modal-name {
     font-size: 1.75rem;
   }
-  
+
   .project-modal-description {
     font-size: 1rem;
   }

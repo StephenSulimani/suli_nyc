@@ -10,14 +10,18 @@ export function Hero({ style }: HeroProps) {
   return (
     <motion.header className="hero" style={style}>
       <div className="hero-inner">
-        <motion.img
-          src={headshotUrl}
-          alt="Stephen Sulimani"
-          className="hero-headshot"
+        <motion.div
+          className="hero-headshot-wrap"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-        />
+        >
+          <img
+            src={headshotUrl}
+            alt="Stephen Sulimani"
+            className="hero-headshot-img"
+          />
+        </motion.div>
         <motion.p
           className="hero-label"
           initial={{ opacity: 0, y: 20 }}
