@@ -248,11 +248,11 @@
 
 .hero-headshot-img {
   width: 100%;
-  height: 100%;
+  /* height: 100%;
   display: block;
   object-fit: cover;
   object-position: 20% 50%;
-  transform-origin: center;
+  transform-origin: center; */
 }
 
 .hero-label {
