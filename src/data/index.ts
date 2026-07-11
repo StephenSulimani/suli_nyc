@@ -211,7 +211,11 @@ export const experience = [
     location: "Oklahoma City, OK",
     period: "June 2026 - August 2026",
     logo: "https://images.squarespace-cdn.com/content/v1/55b7b45ee4b0f49f18fcc363/1438110361321-Q8BVJ5ZP9PVVDZRGRO29/logo.jpg?format=1500w",
-    details: [],
+    details: [
+      "Optimized the fund's proprietary option pricer to achieve a 10–12x reduction in execution latency using JIT compilation.",
+      "Architected scalable, multi-layer data pipelines using PostgreSQL, AWS S3, and DuckDB for automated equity classification.",
+      // "Independently built a secure, centralized API proxy service to manage firm-wide external market data provider integrations.",
+    ],
   },
   {
     role: "Software Engineering Intern",
