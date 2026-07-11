@@ -109,6 +109,13 @@
   left: 0;
   right: 0;
   z-index: 100;
+  /* Keep filter/transform off this root so mobile drawer/backdrop
+     position:fixed relative to the viewport, not the bar. */
+}
+
+.nav-bar {
+  position: relative;
+  z-index: 103;
   padding: 1.25rem 1.5rem;
   background: rgba(9, 9, 11, 0.65);
   backdrop-filter: blur(16px);
@@ -159,6 +166,7 @@
 .nav-toggle {
   display: none;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 5px;
   width: 44px;
@@ -203,11 +211,22 @@
 }
 
 .nav-links {
+  position: absolute;
+  inset: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  z-index: 104;
+  pointer-events: none;
+}
+
+.nav-links a {
+  pointer-events: auto;
 }
 
 .nav-link {
@@ -798,13 +817,12 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .nav {
+  .nav-bar {
     padding: 1rem;
   }
 
   .nav-toggle {
     display: flex;
-    order: 2;
   }
 
   .nav-links {
@@ -812,8 +830,12 @@
     top: 0;
     right: 0;
     bottom: 0;
+    left: auto;
+    max-width: none;
     width: min(280px, 85vw);
     flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     gap: 0;
     padding: 5rem 1.5rem 2rem;
     background: var(--color-paper);
@@ -822,10 +844,12 @@
     transform: translateX(100%);
     transition: transform 0.25s ease;
     overflow-y: auto;
+    pointer-events: none;
   }
 
   .nav-links-open {
     transform: translateX(0);
+    pointer-events: auto;
   }
 
   .nav-links li {
@@ -833,7 +857,6 @@
   }
 
   .nav-link {
-    display: block;
     padding: 1rem 0;
     font-size: 1rem;
     min-height: 44px;
