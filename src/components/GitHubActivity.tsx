@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { containerVariants, itemVariants, sectionViewport } from '../constants/animation'
 import { loadGithubCalendarAssets } from '../lib/github-calendar-loader'
 
 declare global {
@@ -68,7 +68,7 @@ export function GitHubActivity() {
       aria-labelledby="activity-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.div variants={itemVariants}>

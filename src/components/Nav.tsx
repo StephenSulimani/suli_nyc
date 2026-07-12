@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { navLinks } from '../data'
 
 export function Nav() {
   const [isHovered, setIsHovered] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const closeMobileMenu = () => setMobileMenuOpen(false)
+  const setMenuOpen = (open: boolean) => {
+    setMobileMenuOpen(open)
+    // Lock scroll in the click path so it isn't delayed a frame by useEffect.
+    document.body.style.overflow = open ? 'hidden' : ''
+  }
+
+  const closeMobileMenu = () => setMenuOpen(false)
 
   useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
     return () => {
       document.body.style.overflow = ''
     }
-  }, [mobileMenuOpen])
+  }, [])
 
   return (
     <nav className="nav">
@@ -25,9 +26,9 @@ export function Nav() {
           must not sit under transform/filter or they clip to the header. */}
       <motion.div
         className="nav-bar"
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
+        transition={{ duration: 0.35, ease: 'easeOut' }}
       >
         <div className="nav-inner">
           <a
@@ -66,7 +67,7 @@ export function Nav() {
           <button
             type="button"
             className="nav-toggle"
-            onClick={() => setMobileMenuOpen((o) => !o)}
+            onClick={() => setMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
           >
@@ -91,19 +92,11 @@ export function Nav() {
         ))}
       </ul>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            className="nav-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={closeMobileMenu}
-            aria-hidden
-          />
-        )}
-      </AnimatePresence>
+      <div
+        className={`nav-backdrop ${mobileMenuOpen ? 'nav-backdrop-open' : ''}`}
+        onClick={closeMobileMenu}
+        aria-hidden
+      />
     </nav>
   )
 }

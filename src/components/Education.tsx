@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { education } from '../data'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { containerVariants, itemVariants, sectionViewport } from '../constants/animation'
 
 type EducationType = typeof education[0]
 
@@ -22,7 +22,7 @@ export function Education() {
       aria-labelledby="education-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.h2 id="education-heading" className="section-title" variants={itemVariants}>

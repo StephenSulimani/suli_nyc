@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { projects } from '../data'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { containerVariants, itemVariants, sectionViewport } from '../constants/animation'
 
 type ProjectType = typeof projects[0]
 
@@ -22,7 +22,7 @@ export function Projects() {
       aria-labelledby="projects-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.h2 id="projects-heading" className="section-title" variants={itemVariants}>

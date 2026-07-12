@@ -1,16 +1,17 @@
+export const sectionViewport = { once: true, amount: 0.05 } as const
+
 export const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: (i = 1) => ({
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.04 * i },
+    transition: { staggerChildren: 0.08, delayChildren: 0.02 * i },
   }),
 }
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
+  // Keep content opaque so hash jumps don't land on blank sections.
+  hidden: { y: 16 },
   visible: {
-    opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
+    transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 }

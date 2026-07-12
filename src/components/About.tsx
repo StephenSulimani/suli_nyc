@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { containerVariants, itemVariants, sectionViewport } from '../constants/animation'
 
 export function About() {
   return (
@@ -9,7 +9,7 @@ export function About() {
       aria-labelledby="about-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.h2 id="about-heading" className="section-title" variants={itemVariants}>

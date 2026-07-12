@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { interests } from '../data'
-import { containerVariants, itemVariants } from '../constants/animation'
+import { containerVariants, itemVariants, sectionViewport } from '../constants/animation'
 
 export function Interests() {
   return (
@@ -10,7 +10,7 @@ export function Interests() {
       aria-labelledby="interests-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.h2 id="interests-heading" className="section-title" variants={itemVariants}>

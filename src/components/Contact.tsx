@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { containerVariants, itemVariants } from "../constants/animation";
+import { containerVariants, itemVariants, sectionViewport } from "../constants/animation";
 import { githubClick, linkedInClick } from "../constants/events";
 
 export function Contact() {
@@ -10,7 +10,7 @@ export function Contact() {
       aria-labelledby="contact-heading"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={sectionViewport}
       variants={containerVariants}
     >
       <motion.h2
