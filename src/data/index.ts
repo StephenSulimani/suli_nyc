@@ -213,8 +213,9 @@ export const experience = [
     logo: "https://images.squarespace-cdn.com/content/v1/55b7b45ee4b0f49f18fcc363/1438110361321-Q8BVJ5ZP9PVVDZRGRO29/logo.jpg?format=1500w",
     details: [
       "Optimized the fund's proprietary option pricer to achieve a 10–12x reduction in execution latency using JIT compilation.",
+      "Designed and built a Cox-Ross-Rubinstein binomial option pricing engine from scratch in C++, optimizing memory allocation and dynamic lattice structures to deliver a 94x reduction in wall-clock execution time over an optimized JIT implementation.",
       "Architected scalable, multi-layer data pipelines using PostgreSQL, AWS S3, and DuckDB for automated equity classification.",
-      // "Independently built a secure, centralized API proxy service to manage firm-wide external market data provider integrations.",
+      "Independently built a secure, centralized API proxy service to manage firm-wide external market data provider integrations.",
     ],
   },
   {
