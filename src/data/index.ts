@@ -13,6 +13,27 @@ export const navLinks = [
 
 export const projects = [
   {
+    name: "FareLocker",
+    description:
+      "A platform where travelers buy insurance on their airfare, each FareLock acts like an American put option, so if the fare drops after booking the customer collects the difference and gets the lowest fare.",
+    longDescription:
+      "Built the pricing engine and backend. The engine ingests live flight fares scraped on tiered polling, fits a per-route term-structure curve that separates predictable fare drift from random moves, estimates volatility from detrended residuals, and prices each lock as an American put on a binomial tree with a risk-loaded fee. The platform covers the full lifecycle: live quotes, purchase, early exercise, and settlement against real fares.",
+    language: "Python",
+    tech: [
+      "NumPy",
+      "Pandas",
+      "PostgreSQL",
+      "Docker",
+      "SQLAlchemy",
+      "Pydantic",
+      "Google Gemini",
+      "Photon/Spectrum",
+      "React",
+    ],
+    url: "https://farelocker.nyc",
+    updated: 2026,
+  },
+  {
     name: "JuiceArb",
     description:
       "Developed a prediction market arbitrage engine that scans for internal and cross-venue arbitrage on Kalshi, Polymarket, and PredictIt. Utilizes Natural Language Processing, Machine Learning, and Large Language Models to match markets between exchanges and a Go-based service to run arbitrage calculations.",
