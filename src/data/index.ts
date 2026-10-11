@@ -208,7 +208,7 @@ export const education = [
     period: "January 2026 – May 2027",
     logo: "/georgia-tech-logo.png",
     details: [
-      "Coursework: Derivative Securities, Fixed Income Securities, Numerical Methods in Finance, GenAI in Finance.",
+      "Coursework: Derivative Securities, Fixed Income Securities, Numerical Methods in Finance, GenAI in Finance, Stochastic Processes in Finance, Finance & Investments, Design and Implementation of Systems in Computational Finance, Data & Visual Analytics",
     ],
   },
   {
